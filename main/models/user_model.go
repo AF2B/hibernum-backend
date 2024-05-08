@@ -35,7 +35,7 @@ type ActivityLog struct {
 
 type Address struct {
 	Street       string `json:"street"`
-	Number       string `json:"number"`
+	Number       int    `json:"number"`
 	Complement   string `json:"complement"`
 	Neighborhood string `json:"neighborhood"`
 	City         string `json:"city"`

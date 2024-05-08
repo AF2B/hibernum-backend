@@ -10,17 +10,11 @@ import (
 
 func FakeData() {
 	n := 1
-	numInts := 1000
 
 	var users []models.User
 
 	roles := []string{"admin", "user", "manager"}
 	permissions := []string{"read", "write", "delete"}
-	numbers := []int{}
-
-	for i := 0; i < numInts; i++ {
-		numbers = append(numbers, i)
-	}
 
 	for i := 0; i < n; i++ {
 		var user models.User
@@ -37,18 +31,15 @@ func FakeData() {
 		user.PasswordStrengthIndicator = gofakeit.Word()
 		user.Blocked = gofakeit.Date().String()
 
-		// Selecionando aleatoriamente um papel (role) e permissões
 		roleIndex := gofakeit.Number(0, len(roles)-1)
 		permissionIndex := gofakeit.Number(0, len(permissions)-1)
 
 		user.Role = roles[roleIndex]
 		user.Permissions = []string{permissions[permissionIndex]}
 
-		// Gerando dados de endereço
 		user.Address = models.Address{
-			Street: gofakeit.Street(),
-			//FIXME
-			// Number:       gofakeit.Number(1, 100),
+			Street:       gofakeit.Street(),
+			Number:       gofakeit.Number(1, 100),
 			Complement:   gofakeit.Address().Address,
 			Neighborhood: gofakeit.StreetSuffix(),
 			City:         gofakeit.City(),
